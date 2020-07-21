@@ -25,3 +25,11 @@ body{
     align-items: center; 
     font-size: 3em;
 }
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
