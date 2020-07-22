@@ -9,40 +9,50 @@ function ricercaQuadrato(){
 function clickQuadrato(){
 
     var quadratoClick = $(this);
+    var cliccato = quadratoClick.hasClass('clicked');
+
+    if (!cliccato){
+
+        $.ajax({
+
+            url: 'https://flynn.boolean.careers/exercises/api/random/int',
+            method: 'GET' ,
+            success: function( data, state){
     
-    $.ajax({
-
-        url: 'https://flynn.boolean.careers/exercises/api/random/int',
-        method: 'GET' ,
-        success: function( data, state){
-
-            var success = data['success'];
-            var val = data['response'];
-
-            if (success) {
-                if (val <= 5) {
-
-                    quadratoClick.addClass('yellow');
-                    quadratoClick.text(val);
-
+                var success = data['success'];
+                var val = data['response'];
+    
+                if (success){
+    
+                    quadratoClick.addClass('clicked');
+    
+                    if (val <= 5) {
+    
+                        quadratoClick.addClass('yellow');
+                        quadratoClick.text(val);
+    
+                    } else {
+                        quadratoClick.addClass('green');
+                        quadratoClick.text(val);
+    
+                    }
+                    
                 } else {
-                    quadratoClick.addClass('green');
-                    quadratoClick.text(val);
-
+                    console.log('ERROR');
                 }
-                
-            } else {
-                console.log('ERROR');
+    
+               console.log(data['response']);
+    
+            },
+            error: function(request,state,error){
+    
             }
+    
+        })
 
-           console.log(data['response']);
-
-        },
-        error: function(request,state,error){
-
-        }
-
-    })
+    }
+    
+    
 
 }
 

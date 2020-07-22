@@ -17,7 +17,8 @@ body{
 }
 
 .quadrato-griglia{
-    height: 100px;
+    height: +++
+    
     width: 100px;
     border: solid 1px black;
     display: flex;
